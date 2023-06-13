@@ -8,6 +8,10 @@ def weather_app(request):
     if request.method == "POST":
         lati=request.POST['lat']
         longi=request.POST['long']
-        print(lati, longi)
-        return render(request,'weather.html',{'lati':lati,'longi':longi})
-    return render(request,'weather.html')
+        context = {
+            'lati':lati,
+            'longi':longi
+        }
+    else:
+        context = {}
+return render(request,'weather.html',context)
